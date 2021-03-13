@@ -39,7 +39,6 @@ query city($cityName: String!, $config: ConfigInput) {
   }
 }`;
 
-
 export enum Status {
     EXPANDED = 0,
     COLLAPSED = 1
