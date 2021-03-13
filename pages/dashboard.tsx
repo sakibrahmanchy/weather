@@ -82,10 +82,10 @@ const Dashboard: React.FC = () => {
                 handleSubmit={handleSubmit}
                 onCityChange={value => setCity(value)}
             />
-            {cities.length > 0 && <div className="fixed flex flex-row r-0 bottom-0 right-0 mr-10 mt-10">
+            <div className="fixed flex flex-row r-0 bottom-0 right-0 mr-10 mt-10">
                 <span className="ml-2 text-white animate-bounce">Updating Realtime</span>
                 <Blinker containerStyles="ml-36" size={4} />
-            </div>}
+            </div>
             <div className="grid grid-rows-3 grid-cols-3 col gap-6">
                 {cities.map((city: City, index: number) =>
                 (<div className={`${city.status === Status.EXPANDED ? 'col-span-7 sm:col-span-1 row-span-2' : 'col-span-7 sm:col-span-1'}`} key={city.title}>

@@ -127,13 +127,13 @@ const City: React.FC<CityProps> = ({
             </span>
             <div className="p-8 space-y-4 text-center">
                 <div className="flex justify-center">
-                    <span className="text-4xl">{cityName}</span>
+                    <span className="text-3xl">{cityName}</span>
                     <div className="relative">
-                        <sup className="text-2xl">{country}</sup>
+                        <sup className="text-lg">{country}</sup>
                         <Blinker />
                     </div>
                 </div>
-                <div className="text-2xl font-black">{temperature.actual}<sup>°C</sup></div>
+                <div className="text-lg font-black">{temperature.actual}<sup>°C</sup></div>
                 <Summary icon={summary.icon} title={summary.title} description={summary.description} />
             </div>
             {status === Status.EXPANDED && <div className="p-6 bg-gradient-to-t

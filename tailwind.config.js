@@ -1,7 +1,12 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: {
+    content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    options: {
+      safelist: ['bg-yellow-400', 'bg-yellow-500', 'h-3', 'w-3', 'h-4', 'w-4', 'ml-36']
+    }
+  },
   plugins: [],
   theme: {
     extend: {

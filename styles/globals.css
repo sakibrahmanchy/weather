@@ -19,10 +19,14 @@ a {
   box-sizing: border-box;
 } */
 
+.padding-20 {
+  padding-top: 20%;
+}
 
 .search {
   transition: width 0.3s;
-  width: 65px;
+  width: 60px;
+  height: 50px;
 }
 
 .search:focus {

@@ -4,8 +4,8 @@ const Summary: React.FC<Partial<Summary>> = ({
     description = ""
 }) => (
     <div>
-        <img className="m-auto" height="100" width="100" src={`http://openweathermap.org/img/w/${icon}.png`} alt={description} />
-        <figcaption className="text-2xl">{title}</figcaption>
+        <img className="m-auto" height="60" width="60" src={`http://openweathermap.org/img/w/${icon}.png`} alt={description} />
+        <figcaption className="text-lg">{title}</figcaption>
         <span>{description}</span>
     </div>
 )
