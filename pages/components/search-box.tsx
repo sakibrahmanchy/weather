@@ -11,7 +11,7 @@ const SearchBox: React.FC<SearchProps> = ({
     onCityChange,
     searchValue
 }) => (
-    <div className="fixed mr-2 scale-50 focus:scale-x-100  mb-5 right-0 bottom-0 searchBox">
+    <div className="fixed mr-2 scale-50 focus:scale-x-100  mb-10 right-0 bottom-0 searchBox">
         <form onSubmit={handleSubmit}>
             <input type="text"
                 id="search"

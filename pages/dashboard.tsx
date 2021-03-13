@@ -2,13 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import SearchBox from './components/search-box';
 import EmptyView from './components/empty-view';
 import City, { Status } from './components/city';
+import Blinker from './components/blinker';
 
 enum NotificationType {
     INFO = 'info',
     ERROR = 'error'
 }
-
-const UPDATE_DURATION: number = 60
 
 const Dashboard: React.FC = () => {
     const [cities, setCities] = useState<City[]>([]);
@@ -22,7 +21,7 @@ const Dashboard: React.FC = () => {
         setCities(cities);
     }
 
-    const notify = (type: NotificationType, message: string, time: number = 2000) => {
+    const notify = (type: NotificationType, message: string, time: number = 5000) => {
         setShowNotification(true);
         setNotificationType(type);
         setnotificationMessage(message);
@@ -55,15 +54,6 @@ const Dashboard: React.FC = () => {
         document.getElementById('search').focus();
         const cached = JSON.parse(localStorage.getItem('cities')) || [];
         setCities(cached);
-
-        setInterval(() => {
-            const cached = JSON.parse(localStorage.getItem('cities')) || [];
-            if (cached.length && cached.length > 0) {
-                setCities([]);
-                setCities(cached);
-                notify(NotificationType.INFO, `Updated from server`);
-            }
-        }, 1000 * UPDATE_DURATION);
     }, [])
 
     const onToggle = useCallback((index) => {
@@ -86,12 +76,16 @@ const Dashboard: React.FC = () => {
     }
 
     return (
-        <div className="p-10">
+        <div className="p-4">
             <SearchBox
                 searchValue={city}
                 handleSubmit={handleSubmit}
                 onCityChange={value => setCity(value)}
             />
+            {cities.length > 0 && <div className="fixed flex flex-row r-0 bottom-0 right-0 mr-10 mt-10">
+                <span className="ml-2 text-white animate-bounce">Updating Realtime</span>
+                <Blinker containerStyles="ml-36" size={4} />
+            </div>}
             <div className="grid grid-rows-3 grid-cols-3 col gap-6">
                 {cities.map((city: City, index: number) =>
                 (<div className={`${city.status === Status.EXPANDED ? 'col-span-7 sm:col-span-1 row-span-2' : 'col-span-7 sm:col-span-1'}`} key={city.title}>
@@ -108,8 +102,8 @@ const Dashboard: React.FC = () => {
                 {!cities.length && <EmptyView />}
             </div>
 
-            {showNotification && <div className={`animate-bounce fixed mb-5 ml-80 rounded-lg 
-                                        shadow-lg bottom-0 ${notificationType === 'info' ? 'bg-green-500' : 'bg-red-500'}
+            {showNotification && <div className={`animate-bounce fixed mb-5 rounded-lg 
+                                        shadow-lg bottom-0 ${notificationType === 'info' ? 'bg-blue-500' : 'bg-red-500'}
                                      p-4 text-white text-2xl`}>
                 {notificationMessage}
             </div>}

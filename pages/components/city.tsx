@@ -6,6 +6,7 @@ import Clouds from './clouds';
 import Summary from './summary';
 import Loader from './loader';
 import { CONTAINER_COLOR } from '../../constants';
+import Blinker from './blinker';
 
 const GET_CITY_BY_NAME = gql`
 query city($cityName: String!, $config: ConfigInput) {
@@ -75,6 +76,7 @@ const City: React.FC<CityProps> = ({
                 units: "metric"
             },
         },
+        pollInterval: 1000,
     });
 
     const [isfocused, setIsFocused] = useState(false);
@@ -129,10 +131,7 @@ const City: React.FC<CityProps> = ({
                     <span className="text-4xl">{cityName}</span>
                     <div className="relative">
                         <sup className="text-2xl">{country}</sup>
-                        <span className="flex absolute h-3 w-3 ml-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow  -500"></span>
-                        </span>
+                        <Blinker />
                     </div>
                 </div>
                 <div className="text-2xl font-black">{temperature.actual}<sup>°C</sup></div>

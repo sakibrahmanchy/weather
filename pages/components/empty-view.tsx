@@ -1,13 +1,15 @@
 import React from 'react';
 
 const EmptyView: React.FC = () => (
-    <div className="col-span-7 row-span-2 h-screen text-center">
-        <figure className="pt-72">
+    <div className="col-span-7 row-span-2 h-screen text-center h-full">
+        <div className="pt-72">
             <p className="animate-bounce m-auto text-9xl cursor-pointer" onClick={() => {
                 document.getElementById('search').focus();
             }}>&#127853;</p>
-            <figcaption className="animate-pulse text-5xl text-white pt-20">Start by adding cities in the search!</figcaption>
-        </figure>
+            <p className="mt-16 text-lg text-white font-extrabold text-7xl">Start typing a city <br />
+                <span className="text-5xl">on the search box!</span></p>
+            <p className="text-white mt-4 text-2xl">Roam around different cites for weather and more....</p>
+        </div>
     </div>
 );
 
